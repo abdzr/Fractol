@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/04/22 15:02:45 by azarzor          ###   ########.fr       */
+/*   Created: 2019/04/22 15:01:17 by azarzor           #+#    #+#             */
+/*   Updated: 2019/04/24 10:50:17 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fractol.h"
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
-
-# include <mlx.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-
-
-typedef struct s_env t_env;
-struct  s_env
+int main()
 {
-    void    *mlx_ptr;
-    void    *mlx_win;
-    void    *mlx_img;
-    int     *mlx_data;
-    int     bpp;
-    int     endian;
-    int     size_l;
-};
+    t_env env;
+    env.mlx_img = mlx_new_image(env.mlx_ptr, 1000,1000);
+    env.mlx_data = mlx_get_data_addr(env.mlx_img, env.bpp, env.size_l, env.endian);
 
-#endif
+
+
+
+    return(0);
+}
