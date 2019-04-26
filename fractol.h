@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/04/22 15:02:45 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/04/26 19:24:01 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ struct  s_env
     int     bpp;
     int     endian;
     int     size_l;
+    char    clr[4];
 };
 
 #endif
