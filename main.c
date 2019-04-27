@@ -1,47 +1,57 @@
-#include <mlx.h>
-// int     rgb(int r, int g, int b)
-// {
-//   unsigned char   clr[4];
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/27 13:26:56 by azarzor           #+#    #+#             */
+/*   Updated: 2019/04/27 13:27:01 by azarzor          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//   clr[0] = b;
-//   clr[1] = g;
-//   clr[2] = r;
-//   clr[3] = 0;
-//   return (*(int *)clr);
-// }
+#include "fractol.h"
 
-// int     *color1(int *tab)
-// {
-//     tab[0] = rgb(238, 205, 163);
-//     return (tab);
-// }
+int rgb(int r, int g, int b)
+{
+    char clr[4];
+    clr[0] = b;
+    clr[1] = g;
+    clr[2] = r;
+    clr[3] = 1;
+    return (*(int *)clr);
+}
 
 int main()
 {
-    void *mlx_ptr;
-    void *mlx_win;
-    void *mlx_img;
-    int *mlx_data;
-    int bpp;
-    int endian;
-    int size_l;
+    t_env *env;
 
-    mlx_ptr = mlx_init();
-    mlx_win = mlx_new_window(mlx_ptr, 800, 800, "test");
-    mlx_img = mlx_new_image(mlx_ptr, 800, 800);
-    mlx_data = (int *)mlx_get_data_addr(mlx_img, &bpp, &size_l, &endian);
-    int x = 0;
-    while (x < 800)
+    env = (t_env *)malloc(sizeof(t_env));
+    env->mlx_ptr = mlx_init();
+    env->mlx_win = mlx_new_window(env->mlx_ptr, 500, 500, "testing");
+    env->mlx_img = mlx_new_image(env->mlx_ptr, 500, 500);
+    env->mlx_data = (int *)mlx_get_data_addr(env->mlx_img, &env->bpp, &env->size_l, &env->endian);
+
+    for (int row = 0; row < 500; row++)
     {
-        int y = 0;
-        while (y < 800)
+        for (int col = 0; col < 500; col++)
         {
-            mlx_data[x * 200 * y] = 0xFFFFFF;
-            x++;
-            y++;
+            double c_re = (col - 500 / 2.0) * 4.0 / 500;
+            double c_im = (row - 500 / 2.0) * 4.0 / 500;
+            int x = 0, y = 0;
+            int iteration = 0;
+            while (x * x + y * y <= 4 && iteration < 50)
+            {
+                double x_new = x * x - y * y + c_re;
+                y = 2 * x * y + c_im;
+                x = x_new;
+                iteration++;
+            }
+            if (iteration < 100)
+                env->mlx_data[x * 500 * y] = rgb(255, 255, 255);
         }
     }
-    mlx_put_image_to_window(mlx_ptr, mlx_win, mlx_img, 0, 0);
-    mlx_loop(mlx_ptr);
+    mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
+    mlx_loop(env->mlx_ptr);
     return (0);
 }
