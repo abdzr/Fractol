@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/04/27 16:13:56 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/04/29 15:48:25 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ struct s_env
 {
     int         row;
     int         col;
+    int         z;
     double      cre;
     double      cim;
     double      x;
@@ -38,5 +39,6 @@ struct s_env
     void        *mlx_win;
     void        *mlx_img;
 };
-
+int     key_stroke(int key, void *test);
+void    mandeldraw(t_env *env);
 #endif
