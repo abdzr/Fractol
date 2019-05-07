@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 13:26:56 by azarzor           #+#    #+#             */
-/*   Updated: 2019/04/29 16:16:58 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/07 15:05:43 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,44 +21,19 @@ int rgb(int r, int g, int b)
 	clr[3] = 1;
 	return (*(int *)clr);
 }
-void mandeldraw(t_env *env)
-{
-	env->z = 1;
-	env->row = -1;
-	while (++env->row < 600)
-	{
-		env->col = -1;
-		while (++env->col < 600)
-		{
-			// must be optimised.
-			env->cre = env->z * (env->col - 600 / 2.0) * 4.0 / 600;
-			env->cim = (env->row - 600 / 2.0) * 4.0 / 600;
 
-			env->x = 0;
-			env->y = 0;
-			env->iter = 0;
-			while (env->x * env->x + env->y * env->y <= 4 && env->iter < 30)
-			{
-				env->xnew = env->x * env->x - env->y * env->y + env->cre;
-				env->y = 2 * env->x * env->y + env->cim;
-				env->x = env->xnew;
-				env->iter++;
-			}
-			if (env->iter < 30)
-				env->mlx_data[env->row * 600 + env->col] = rgb(255, 255, 255);
-		}
-	}
-}
 int main()
 {
 	t_env *env;
 
 	env = (t_env *)malloc(sizeof(t_env));
 	env->mlx_ptr = mlx_init();
-	env->mlx_win = mlx_new_window(env->mlx_ptr, 600, 600, "testing");
-	env->mlx_img = mlx_new_image(env->mlx_ptr, 600, 600);
+	env->mlx_win = mlx_new_window(env->mlx_ptr, WIN_W, WIN_H, "testing");
+	env->mlx_img = mlx_new_image(env->mlx_ptr, WIN_W, WIN_H);
 	env->mlx_data = (int *)mlx_get_data_addr(env->mlx_img, &env->bpp, &env->size_l, &env->endian);
-	mandeldraw(env);
+	env->z = 0;
+	 mandeldraw(env);
+
 	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
 	mlx_hook(env->mlx_win, 2, 0, &key_stroke, env);
 	mlx_loop(env->mlx_ptr);

@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/04/29 15:48:25 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/07 15:05:01 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define WIN_W 600
+#define WIN_H 600
 
 typedef struct s_env t_env;
 struct s_env
 {
     int         row;
     int         col;
-    int         z;
+    double      z;
     double      cre;
     double      cim;
     double      x;
@@ -41,4 +43,7 @@ struct s_env
 };
 int     key_stroke(int key, void *test);
 void    mandeldraw(t_env *env);
+void    mandelcalcul(t_env *env);
+void    mandelcolor(t_env *env);
+int     rgb(int r, int g, int b);
 #endif
