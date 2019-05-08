@@ -46,8 +46,8 @@ void mandeldraw(t_env *env)
 		env->col = -1;
 		while (++env->col < WIN_H)
 		{
-			env->cre = (env->col - WIN_W / 2.0) * 4.0 / WIN_W;
-			env->cim = (env->row - WIN_H / 2.0) * 4.0 / WIN_W;
+			env->cre = mlx->minre + ((mlx->maxre - mlx->minre) / WIN_W) * mlx->row ;
+			env->cim = mlx->minim + ((mlx->maxim - mlx->minim) / WIN_H) * mlx->col;
 			env->x = 0;
 			env->y = 0;
 			env->iter = 0;

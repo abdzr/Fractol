@@ -24,3 +24,12 @@ int key_stroke(int key, void *test)
     mandeldraw(env);
     return (0);
 }
+
+int     mouse_hook(int mouse, int x, int y, t_env *env)
+{
+    if (mouse == 4)
+    {
+        zoom(x, y 0.9, env)
+        
+    }
+}
