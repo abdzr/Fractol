@@ -6,11 +6,27 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 22:53:04 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/07 15:06:20 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/08 12:02:09 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+double		calc(double start, double end, double zoom)
+{
+	return((start) + (end - start) * zoom);
+}
+
+void		zoom(t_env *env, double mouseRe, double mouseIm, double zoomFactor)
+{
+	double interpolation;
+
+	interpolation = 1.0 / zoomFactor;
+	env->minre = calc(mouseRe, env->minre, interpolation);
+	env->minim = calc(mouseIm, env->minim, interpolation);
+	env->maxre = calc(mouseRe, env->maxre, interpolation);
+	env->maxim = calc(mouseIm, env->maxim, interpolation);
+}
 
 void		images(t_env *env)
 {
@@ -35,14 +51,14 @@ void mandeldraw(t_env *env)
 			env->x = 0;
 			env->y = 0;
 			env->iter = 0;
-			while (env->x * env->x + env->y * env->y <= 4 && env->iter < 50)
+			while (env->x * env->x + env->y * env->y <= 4 && env->iter < 500)
 			{
 				env->xnew = env->x * env->x - env->y * env->y + (env->cre * (1.1 + env->z));
 				env->y = 2 * env->x * env->y + (env->cim * (1.1 + env->z));
 				env->x = env->xnew;
 				env->iter++;
 			}
-			if (env->iter < 50)
+			if (env->iter < 500)
 				env->mlx_data[env->row * 600 + env->col] = rgb(255, 255, 255);
 		}
 	}
