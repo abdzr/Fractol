@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 11:53:28 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/03 21:05:16 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/08 22:43:29 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int key_stroke(int key, void *test)
     return (0);
 }
 
-int     mouse_hook(int mouse, int x, int y, t_env *env)
-{
-    if (mouse == 4)
-    {
-        zoom(x, y 0.9, env)
+// int     mouse_hook(int mouse, int x, int y, t_env *env)
+// {
+//     if (mouse == 4)
+//     {
+//         zoom(x, y 0.9, env)
         
-    }
-}
+//     }
+// }

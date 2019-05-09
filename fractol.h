@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/07 17:46:14 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/09 14:31:27 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,21 @@
 #define WIN_W 600
 #define WIN_H 600
 
-typedef struct s_env t_env;
-struct s_env
+typedef struct s_env
 {
+    void *mlx_ptr;
+    void *mlx_win;
+    void *mlx_img;
+    int *tab;
+    int *colors;
+    int max;
+    int row;
+    int col;
+    int iter;
+    int *mlx_data;
+    int bpp;
+    int endian;
+    int size_l;
     double minre;
     double maxre;
     double minim;
@@ -34,20 +46,11 @@ struct s_env
     double x;
     double y;
     double xnew;
-    int row;
-    int col;
-    int iter;
-    int *mlx_data;
-    int bpp;
-    int endian;
-    int size_l;
-    void *mlx_ptr;
-    void *mlx_win;
-    void *mlx_img;
-};
+}t_env;
 int key_stroke(int key, void *test);
 void mandeldraw(t_env *env);
 void mandelcalcul(t_env *env);
 void mandelcolor(t_env *env);
 int rgb(int r, int g, int b);
+int *clrs(t_env *env);
 #endif
