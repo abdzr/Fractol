@@ -6,11 +6,12 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 22:53:04 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/09 14:22:27 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/09 15:32:14 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "./libft/libft.h"
 
 
 void		images(t_env *env)
@@ -24,8 +25,8 @@ void		images(t_env *env)
 
 void mandeldraw(t_env *env)
 {
-	printf("here");
 	env->colors = clrs(env);
+	ft_putnbr(env->colors[5]);
 	images(env);	
 	env->row = -1;
 	while (++env->row < WIN_W)

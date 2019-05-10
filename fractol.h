@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/09 14:31:27 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/09 15:30:20 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "./libft/libft.h"
 #define WIN_W 600
 #define WIN_H 600
 
@@ -26,7 +27,7 @@ typedef struct s_env
     void *mlx_ptr;
     void *mlx_win;
     void *mlx_img;
-    int *tab;
+    int tab[24];
     int *colors;
     int max;
     int row;
