@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 22:53:04 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/09 15:32:14 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/11 01:53:28 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void		images(t_env *env)
 void mandeldraw(t_env *env)
 {
 	env->colors = clrs(env);
-	ft_putnbr(env->colors[5]);
 	images(env);	
 	env->row = -1;
 	while (++env->row < WIN_W)
@@ -39,15 +38,44 @@ void mandeldraw(t_env *env)
 			env->x = 0;
 			env->y = 0;
 			env->iter = 0;
-			while (env->x * env->x + env->y * env->y <= 4 && env->iter < 30)
+			while (env->x * env->x + env->y * env->y <= 4 && env->iter < env->max)
 			{
-				env->xnew = env->x * env->x - env->y * env->y + (env->cre * (1.1 + env->z));
-				env->y = 2 * env->x * env->y + (env->cim * (1.1 + env->z));
+				env->xnew = env->x * env->x - env->y * env->y + (env->cre);
+				env->y = 2 * env->x * env->y + (env->cim);
 				env->x = env->xnew;
 				env->iter++;
 			}
-			if (env->iter < 30)
-				env->mlx_data[env->row * 600 + env->col] = env->colors[env->iter % 24];
+			if (env->iter < env->max)
+				env->mlx_data[env->row * WIN_W + env->col] = env->colors[env->iter % 24];
+		}
+	}
+	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
+}
+
+void juliadraw(t_env *env)
+{
+	env->colors = clrs(env);
+	images(env);	
+	env->row = -1;
+	while (++env->row < WIN_W)
+	{
+		env->col = -1;
+		while (++env->col < WIN_H)
+		{
+			env->cre = env->minre + ((env->maxre - env->minre) / WIN_W) * env->col;
+			env->cim = env->minim + ((env->maxim - env->minim) / WIN_H) * env->row;
+			env->x = env->cre;
+			env->y = env->cim;
+			env->iter = 0;
+			while (env->x * env->x + env->y * env->y <= 4 && env->iter < env->max)
+			{
+				env->xnew = env->x * env->x - env->y * env->y + (env->jul_cre);
+				env->y = 2 * env->x * env->y + (env->jul_cim);
+				env->x = env->xnew;
+				env->iter++;
+			}
+			if (env->iter < env->max)
+				env->mlx_data[env->row * WIN_W + env->col] = env->colors[env->iter % 24];
 		}
 	}
 	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);

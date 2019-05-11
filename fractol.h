@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/09 15:30:20 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/11 01:50:52 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,16 @@ typedef struct s_env
     double x;
     double y;
     double xnew;
+    double scale;
+    double jul_cre;
+    double jul_cim;
 }t_env;
+
 int key_stroke(int key, void *test);
 void mandeldraw(t_env *env);
 void mandelcalcul(t_env *env);
 void mandelcolor(t_env *env);
 int rgb(int r, int g, int b);
 int *clrs(t_env *env);
+void juliadraw(t_env *env);
 #endif

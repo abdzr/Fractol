@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 13:35:12 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/09 15:29:39 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/10 21:58:58 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int rgb(int r, int g, int b)
 
 int		*clrs(t_env *env)
 {
-	ft_putendl("colors");
 	env->tab[0] = rgb(238, 205, 163);
 	env->tab[1] = rgb(238, 198, 162);
 	env->tab[2] = rgb(238, 191, 162);
