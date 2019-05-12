@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/11 01:50:52 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/11 05:52:33 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "./libft/libft.h"
+#include <math.h>
 #define WIN_W 600
 #define WIN_H 600
 
@@ -59,4 +60,6 @@ void mandelcolor(t_env *env);
 int rgb(int r, int g, int b);
 int *clrs(t_env *env);
 void juliadraw(t_env *env);
+double		ft_abs(double x);
+void burningshipdraw(t_env *env);
 #endif
