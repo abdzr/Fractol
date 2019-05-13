@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 13:26:56 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/11 15:54:35 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/12 15:45:44 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int mouse_zoom(int button, int x, int y, void *param)
 		env->minim = (env->minim - newy) / env->scale + newy;
 		env->maxim = (env->maxim - newy) / env->scale + newy;
 	}
-	burningshipdraw(env);
+	juliadraw(env);
 	return (0);
 }
 
@@ -97,12 +97,12 @@ int main()
 	env->scale = 1.1;
 	values(env);
 	// mandeldraw(env);
-	// juliadraw(env);
-	burningshipdraw(env);
+	juliadraw(env);
+	// burningshipdraw(env);
 	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
 	mlx_hook(env->mlx_win, 2, 0, &key_stroke, env);
 	mlx_hook(env->mlx_win, 4, 0, &mouse_zoom, env);
-	// mlx_hook(env->mlx_win, 6, 0, &mouse_move, env);
+	mlx_hook(env->mlx_win, 6, 0, &mouse_move, env);
 	mlx_loop(env->mlx_ptr);
 	return (0);
 }

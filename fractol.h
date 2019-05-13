@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/11 05:52:33 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/12 15:48:39 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #include <string.h>
 #include "./libft/libft.h"
 #include <math.h>
-#define WIN_W 600
-#define WIN_H 600
+#define WIN_W 650
+#define WIN_H 650
 
 typedef struct s_env
 {
@@ -51,7 +51,7 @@ typedef struct s_env
     double scale;
     double jul_cre;
     double jul_cim;
-}t_env;
+} t_env;
 
 int key_stroke(int key, void *test);
 void mandeldraw(t_env *env);
@@ -60,6 +60,15 @@ void mandelcolor(t_env *env);
 int rgb(int r, int g, int b);
 int *clrs(t_env *env);
 void juliadraw(t_env *env);
-double		ft_abs(double x);
+double ft_abs(double x);
+void burningshipdraw(t_env *env);
+int *fireorange(t_env *env);
+int *aqua_blue(t_env *env);
+void images(t_env *env);
+int mouse_zoom(int button, int x, int y, void *param);
+double ft_abs(double x);
+void values(t_env *env);
+double ft_map(double n, double start, double min, double max);
+int mouse_move(int x, int y, void *param);
 void burningshipdraw(t_env *env);
 #endif
