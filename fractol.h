@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/12 15:48:39 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/14 01:15:06 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_env
     int bpp;
     int endian;
     int size_l;
+    int c;
     double minre;
     double maxre;
     double minim;

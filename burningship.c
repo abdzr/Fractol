@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/30 22:53:04 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/13 16:12:01 by azarzor          ###   ########.fr       */
+/*   Created: 2019/05/13 16:11:02 by azarzor           #+#    #+#             */
+/*   Updated: 2019/05/13 16:13:07 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include "./libft/libft.h"
 
-
-void		images(t_env *env)
+double ft_abs(double x)
 {
-	mlx_clear_window(env->mlx_ptr, env->mlx_win);
-	mlx_destroy_image(env->mlx_ptr, env->mlx_img);
-	env->mlx_img = mlx_new_image(env->mlx_ptr, WIN_W, WIN_H);
-	env->mlx_data = (int *)mlx_get_data_addr(env->mlx_img, &(env->bpp),
-											 &(env->size_l), &(env->endian));
+	if (x < 0)
+		return (-x);
+	else if (x > 0)
+		return (x);
+	return (0);
 }
 
-void mandeldraw(t_env *env)
+void burningshipdraw(t_env *env)
 {
-	env->colors = clrs(env);
+	env->colors = aqua_blue(env);
 	images(env);	
 	env->row = -1;
 	while (++env->row < WIN_W)
@@ -41,7 +39,7 @@ void mandeldraw(t_env *env)
 			while (env->x * env->x + env->y * env->y <= 4 && env->iter < env->max)
 			{
 				env->xnew = env->x * env->x - env->y * env->y + (env->cre);
-				env->y = 2 * env->x * env->y + (env->cim);
+				env->y = ft_abs(2 * env->x * env->y)+ (env->cim);
 				env->x = env->xnew;
 				env->iter++;
 			}
