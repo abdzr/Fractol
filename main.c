@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 13:26:56 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/14 16:11:14 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/14 20:06:42 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,20 @@ int	printerror(int c)
 }
 void values(t_env *env)
 {
-	env->minre = (0 - WIN_W / 2.0) * 4.0 / WIN_W;
-	env->maxre = (WIN_W - WIN_W / 2.0) * 4.0 / WIN_W;
-	env->minim = (0 - WIN_H / 2.0) * 4.0 / WIN_W;
-	env->maxim = (WIN_H - WIN_H / 2.0) * 4.0 / WIN_W;
+	env->mnre = (0 - WIN_W / 2.0) * 4.0 / WIN_W;
+	env->mxre = (WIN_W - WIN_W / 2.0) * 4.0 / WIN_W;
+	env->mnim = (0 - WIN_H / 2.0) * 4.0 / WIN_W;
+	env->mxim = (WIN_H - WIN_H / 2.0) * 4.0 / WIN_W;
+	env->colors = clrs(env);
 }
 void	mouse(t_env *env)
 {
 	mlx_hook(env->mlx_win, 2, 0, &key_stroke, env);
 	mlx_hook(env->mlx_win, 4, 0, &mouse_zoom, env);
+	if (env->c == 2 && env->k == 1)
+		mlx_hook(env->mlx_win, 6, 0, &mouse_move, env);
+	
+
 }
 int main(int argc, char **argv)
 {
