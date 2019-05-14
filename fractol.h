@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/14 01:15:06 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/14 16:22:05 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "./libft/libft.h"
+#include "./ft_mlx_keys.h"
 #include <math.h>
 #define WIN_W 650
 #define WIN_H 650
@@ -72,4 +73,5 @@ void values(t_env *env);
 double ft_map(double n, double start, double min, double max);
 int mouse_move(int x, int y, void *param);
 void burningshipdraw(t_env *env);
+void    choice(t_env *env);
 #endif

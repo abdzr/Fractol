@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 13:26:56 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/13 16:37:26 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/14 16:11:14 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ void values(t_env *env)
 	env->minim = (0 - WIN_H / 2.0) * 4.0 / WIN_W;
 	env->maxim = (WIN_H - WIN_H / 2.0) * 4.0 / WIN_W;
 }
-
+void	mouse(t_env *env)
+{
+	mlx_hook(env->mlx_win, 2, 0, &key_stroke, env);
+	mlx_hook(env->mlx_win, 4, 0, &mouse_zoom, env);
+}
 int main(int argc, char **argv)
 {
 	t_env *env;
@@ -52,7 +56,7 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 		printerror(1);
-	if (ft_strcmp(argv[1], "Mandelbrot") == 0)
+	if (ft_strcmp(argv[1], "Mandelbrot") == 0 || ft_strcmp(argv[1], "mandelbrot") == 0)
 		env->c = 1;
 	else if (ft_strcmp(argv[1], "Julia") == 0)
 		env->c = 2;
@@ -70,9 +74,7 @@ int main(int argc, char **argv)
 	values(env);
 	choice(env);
 	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
-	mlx_hook(env->mlx_win, 2, 0, &key_stroke, env);
-	mlx_hook(env->mlx_win, 4, 0, &mouse_zoom, env);
-	mlx_hook(env->mlx_win, 6, 0, &mouse_move, env);
+	mouse(env);
 	mlx_loop(env->mlx_ptr);
 	return (0);
 }

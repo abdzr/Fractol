@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 11:53:28 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/13 16:12:33 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/14 16:19:44 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int key_stroke(int key, void *test)
 
     env = (t_env *)test;
     (key == 53) ? exit(0) : 1;
-    if (key == 126)
-        env->max = env->max + 5;
-    if (key == 124)
-
-    mandeldraw(env);
+    (key == 126) ? env->max = env->max + 5 : 1;
+	(key == 83) ? env->c = 1 : 1;
+	(key == 84) ? env->c = 2 : 1;
+	(key == 85) ? env->c = 3 : 1;
+    choice(env);
     return (0);
 }
 
@@ -57,7 +57,8 @@ int mouse_zoom(int button, int x, int y, void *param)
 		env->minim = (env->minim - newy) / env->scale + newy;
 		env->maxim = (env->maxim - newy) / env->scale + newy;
 	}
-	juliadraw(env);
+	env->max += 1;
+	choice(env);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:43:37 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/12 15:48:47 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/14 14:14:41 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void juliadraw(t_env *env)
 		}
 	}
 	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
+	mlx_hook(env->mlx_win, 6, 0, &mouse_move, env);
 }
