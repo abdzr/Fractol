@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   tricorn.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/30 22:53:04 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/16 13:06:12 by azarzor          ###   ########.fr       */
+/*   Created: 2019/05/16 13:04:08 by azarzor           #+#    #+#             */
+/*   Updated: 2019/05/16 13:05:50 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-#include "./libft/libft.h"
+#include "./fractol.h"
 
-void		images(t_env *env)
-{
-	mlx_clear_window(env->mlx_ptr, env->mlx_win);
-	mlx_destroy_image(env->mlx_ptr, env->mlx_img);
-	env->mlx_img = mlx_new_image(env->mlx_ptr, WIN_W, WIN_H);
-	env->mlx_data = (int *)mlx_get_data_addr(env->mlx_img, &(env->bpp),
-			&(env->size_l), &(env->endian));
-	env->row = -1;
-}
-
-void		mandeldraw(t_env *env)
+void		tricorndraw(t_env *env)
 {
 	images(env);
 	while (++env->row < WIN_W)
@@ -40,7 +29,7 @@ void		mandeldraw(t_env *env)
 					&& env->iter < env->max)
 			{
 				env->xnew = env->x * env->x - env->y * env->y + (env->cre);
-				env->y = (2 * env->x * env->y + (env->cim));
+				env->y = -2 * env->x * env->y + (env->cim);
 				env->x = env->xnew;
 				env->iter++;
 			}

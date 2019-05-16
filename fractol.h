@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/21 15:30:14 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/14 20:00:12 by azarzor          ###   ########.fr       */
+/*   Created: 2019/05/15 17:08:50 by azarzor           #+#    #+#             */
+/*   Updated: 2019/05/15 17:50:09 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
@@ -24,9 +25,17 @@
 # define WIN_W 650
 # define WIN_H 650
 
+typedef struct 	s_point
+{
+	double		x;
+	double		y;
+}				t_point;
+
 typedef struct	s_env
 {
 	void		*mlx_ptr;
+	t_point		juliapos;
+	int			islocked;	
 	void		*mlx_win;
 	void		*mlx_img;
 	int			tab[24];

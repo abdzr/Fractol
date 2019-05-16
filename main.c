@@ -6,14 +6,15 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 13:26:56 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/14 20:06:42 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/15 20:19:35 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "ft_mlx_keys.h"
+#include <stdio.h>
 
-void choice(t_env *env)
+void			choice(t_env *env)
 {
 	if (env->c == 1)
 		mandeldraw(env);
@@ -23,7 +24,7 @@ void choice(t_env *env)
 		burningshipdraw(env);
 }
 
-int	printerror(int c)
+int				printerror(int c)
 {
 	if (c == 1)
 	{
@@ -33,32 +34,39 @@ int	printerror(int c)
 	if (c == 2)
 	{
 		ft_putendl("Usage : ./fractol Mandelbrot, Julia, Burningship");
-		exit(0);	
+		exit(0);
 	}
 	return(0);
 }
-void values(t_env *env)
-{
-	env->mnre = (0 - WIN_W / 2.0) * 4.0 / WIN_W;
-	env->mxre = (WIN_W - WIN_W / 2.0) * 4.0 / WIN_W;
-	env->mnim = (0 - WIN_H / 2.0) * 4.0 / WIN_W;
-	env->mxim = (WIN_H - WIN_H / 2.0) * 4.0 / WIN_W;
-	env->colors = clrs(env);
-}
-void	mouse(t_env *env)
+
+void			mouse(t_env *env)
 {
 	mlx_hook(env->mlx_win, 2, 0, &key_stroke, env);
 	mlx_hook(env->mlx_win, 4, 0, &mouse_zoom, env);
-	if (env->c == 2 && env->k == 1)
+	if (env->c == 2)
 		mlx_hook(env->mlx_win, 6, 0, &mouse_move, env);
-	
-
 }
-int main(int argc, char **argv)
+
+
+void			mlxinit(t_env *env)
+{
+	env->mlx_ptr = mlx_init();
+	env->mlx_win = mlx_new_window(env->mlx_ptr, WIN_W, WIN_H, "testing");
+	env->mlx_img = mlx_new_image(env->mlx_ptr, WIN_W, WIN_H);
+	env->mlx_data = (int *)mlx_get_data_addr(env->mlx_img, &env->bpp, &env->size_l, &env->endian);
+	env->z = 0;
+	env->k = 1;
+	env->max = 30;
+	env->scale = 1.1;
+	values(env);
+	choice(env);
+}
+
+int				main(int argc, char **argv)
 {
 	t_env *env;
-	env = (t_env *)malloc(sizeof(t_env));
 
+	env = (t_env *)malloc(sizeof(t_env));
 	if (argc != 2)
 		printerror(1);
 	if (ft_strcmp(argv[1], "Mandelbrot") == 0 || ft_strcmp(argv[1], "mandelbrot") == 0)
@@ -69,15 +77,7 @@ int main(int argc, char **argv)
 		env->c = 3;
 	else
 		printerror(2);
-	env->mlx_ptr = mlx_init();
-	env->mlx_win = mlx_new_window(env->mlx_ptr, WIN_W, WIN_H, "testing");
-	env->mlx_img = mlx_new_image(env->mlx_ptr, WIN_W, WIN_H);
-	env->mlx_data = (int *)mlx_get_data_addr(env->mlx_img, &env->bpp, &env->size_l, &env->endian);
-	env->z = 0;
-	env->max = 30;
-	env->scale = 1.1;
-	values(env);
-	choice(env);
+	mlxinit(env);
 	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
 	mouse(env);
 	mlx_loop(env->mlx_ptr);

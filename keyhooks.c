@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/29 11:53:28 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/14 21:23:25 by azarzor          ###   ########.fr       */
+/*   Created: 2019/05/15 17:09:15 by azarzor           #+#    #+#             */
+/*   Updated: 2019/05/15 20:20:23 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "fractol.h"
 
@@ -22,11 +23,22 @@ int key_stroke(int key, void *test)
 	(key == 83) ? env->c = 1 : 1;
 	(key == 84) ? env->c = 2 : 1;
 	(key == 85) ? env->c = 3 : 1;
-	(key == 49 && env->k == 0) ? env->k = 1 : 1;
-	(key == 49 && env->k == 1) ? env->k = 0 : 1;
+	if (key == KEY_SPACE)
+		env->k = (env->k == 0) ? 1 : 0;
 	choice(env);
 	return (0);
 }
+
+void			values(t_env *env)
+{
+	env->mnre = (0 - WIN_W / 2.0) * 4.0 / WIN_W;
+	env->mxre = (WIN_W - WIN_W / 2.0) * 4.0 / WIN_W;
+	env->mnim = (0 - WIN_H / 2.0) * 4.0 / WIN_W;
+	env->mxim = (WIN_H - WIN_H / 2.0) * 4.0 / WIN_W;
+	env->colors = clrs(env);
+}
+
+
 
 double ft_map(double n, double start, double min, double max)
 {
@@ -59,7 +71,6 @@ int mouse_zoom(int button, int x, int y, void *param)
 		env->mnim = (env->mnim - newy) / env->scale + newy;
 		env->mxim = (env->mxim - newy) / env->scale + newy;
 	}
-	env->max += 1;
 	choice(env);
 	return (0);
 }
@@ -72,6 +83,8 @@ int mouse_move(int x, int y, void *param)
 
 	env = (t_env *)param;
 	if (env->c != 2)
+		return (0);
+	if (env->k == 0)
 		return (0);
 	newx = ft_map(x, WIN_W, -2, 2);
 	newy = ft_map(y, WIN_H, -2, 2);

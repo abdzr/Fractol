@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Julia.c                                            :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:43:37 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/14 14:14:41 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/16 13:00:02 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void juliadraw(t_env *env)
 {
-	env->colors = aqua_blue(env);
-	images(env);	
-	env->row = -1;
+	images(env);
 	while (++env->row < WIN_W)
 	{
 		env->col = -1;
 		while (++env->col < WIN_H)
 		{
-			env->cre = env->minre + ((env->maxre - env->minre) / WIN_W) * env->col;
-			env->cim = env->minim + ((env->maxim - env->minim) / WIN_H) * env->row;
+			env->cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * env->col;
+			env->cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * env->row;
 			env->x = env->cre;
 			env->y = env->cim;
 			env->iter = 0;
@@ -35,9 +33,9 @@ void juliadraw(t_env *env)
 				env->iter++;
 			}
 			if (env->iter < env->max)
-				env->mlx_data[env->row * WIN_W + env->col] = env->colors[env->iter % 24];
+				env->mlx_data[env->row * WIN_W + env->col] =
+					env->colors[env->iter % 24];
 		}
 	}
 	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
-	mlx_hook(env->mlx_win, 6, 0, &mouse_move, env);
 }
