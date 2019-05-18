@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 13:26:56 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 03:59:50 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 05:02:01 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,12 @@ void mouse(t_env *env)
 
 void mlxinit(t_env *env)
 {
-	env->mlx_ptr = mlx_init();
-	env->mlx_win = mlx_new_window(env->mlx_ptr, WIN_W, WIN_H, "testing");
-	env->mlx_img = mlx_new_image(env->mlx_ptr, WIN_W, WIN_H);
-	env->mlx_data = (int *)mlx_get_data_addr(env->mlx_img, &env->bpp, &env->size_l, &env->endian);
+	
 	env->z = 0;
 	env->k = 1;
 	env->max = 30;
 	env->scale = 1.1;
+	env->colors = clrs(env);
 	values(env);
 	choice(env);
 }
@@ -86,6 +84,10 @@ int main(int argc, char **argv)
 		env->c = 3;
 	else
 		printerror(2);
+		env->mlx_ptr = mlx_init();
+	env->mlx_win = mlx_new_window(env->mlx_ptr, WIN_W, WIN_H, "testing");
+	env->mlx_img = mlx_new_image(env->mlx_ptr, WIN_W, WIN_H);
+	env->mlx_data = (int *)mlx_get_data_addr(env->mlx_img, &env->bpp, &env->size_l, &env->endian);
 	mlxinit(env);
 	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
 	mouse(env);
