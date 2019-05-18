@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:43:37 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 03:52:58 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 04:19:22 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void juliadrawv3(t_env *env)
 			env->iter = 0;
 			while (env->x * env->x + env->y * env->y <= 4 && env->iter < env->max)
 			{
-				env->xnew = env->x * env->x * env->x - 3 * env->x * env->y * env->y+ (env->jul_cre);
-				env->y =  3 * env->x * env->x * env->y - env->y * env->y * env->y+ (env->jul_cim);
+				env->xnew = env->x * env->x * env->x - 3 * env->x * env->y * env->y + env->jul_cre;
+				env->y = 3 * env->x * env->x * env->y - env->y * env->y * env->y + env->jul_cim;
 				env->x = env->xnew;
 				env->iter++;
 			}
@@ -83,8 +83,8 @@ void juliadrawv4(t_env *env)
 			env->iter = 0;
 			while (env->x * env->x + env->y * env->y <= 4 && env->iter < env->max)
 			{
-				env->xnew = env->x * env->x * env->x * env->x - 6 * env->x * env->x * env->y * env->y + env->y * env->y * env->y * env->y + (env->jul_cre);
-				env->y = 4 * env->x * env->x * env->x * env->y - 4 * env->x * env->y * env->y * env->y+ (env->jul_cim);
+				env->xnew = env->x * env->x * env->x * env->x - 6 * env->x * env->x * env->y * env->y + env->y * env->y * env->y * env->y + env->jul_cre;
+				env->y = 4 * env->x * env->x * env->x * env->y - 4 * env->x * env->y * env->y * env->y + env->jul_cim;
 				env->x = env->xnew;
 				env->iter++;
 			}

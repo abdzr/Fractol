@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:15 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 04:00:57 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 04:23:35 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int key_stroke(int key, void *test)
 	(key == KEY_PAD_7) ? env->c = 7 : 1;
 	(key == KEY_PAD_8) ? env->c = 8 : 1;
 	if (key == KEY_SPACE)
-		env->k = (env->k == 0) ? 1 : 0;
+			env->k = (env->k == 0) ? 1 : 0;
 	choice(env);
 	return (0);
 }
@@ -95,6 +95,11 @@ int mouse_move(int x, int y, void *param)
 	newy = ft_map(y, WIN_H, -2, 2);
 	env->jul_cre = newx;
 	env->jul_cim = newy;
-	juliadraw(env);
+	if (env->c == 2)
+		juliadraw(env);
+	if (env->c == 4)
+		juliadrawv3(env);
+	if (env->c == 5)
+		juliadrawv4(env);
 	return (0);
 }
