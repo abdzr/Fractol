@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:15 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/15 20:20:23 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 04:00:57 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@ int key_stroke(int key, void *test)
 	env = (t_env *)test;
 	(key == 53) ? exit(0) : 1;
 	(key == 126) ? env->max = env->max + 5 : 1;
-	(key == 83) ? env->c = 1 : 1;
-	(key == 84) ? env->c = 2 : 1;
-	(key == 85) ? env->c = 3 : 1;
+	(key == KEY_PAD_1) ? env->c = 1 : 1;
+	(key == KEY_PAD_2) ? env->c = 2 : 1;
+	(key == KEY_PAD_3) ? env->c = 3 : 1;
+	(key == KEY_PAD_4) ? env->c = 4 : 1;
+	(key == KEY_PAD_5) ? env->c = 5 : 1;
+	(key == KEY_PAD_6) ? env->c = 6 : 1;
+	(key == KEY_PAD_7) ? env->c = 7 : 1;
+	(key == KEY_PAD_8) ? env->c = 8 : 1;
 	if (key == KEY_SPACE)
 		env->k = (env->k == 0) ? 1 : 0;
 	choice(env);
@@ -82,7 +87,7 @@ int mouse_move(int x, int y, void *param)
 	double newy;
 
 	env = (t_env *)param;
-	if (env->c != 2)
+	if (env->c != 2 && env->c != 4 && env->c != 5)
 		return (0);
 	if (env->k == 0)
 		return (0);

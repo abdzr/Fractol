@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 13:26:56 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/15 20:19:35 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 03:59:50 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_mlx_keys.h"
 #include <stdio.h>
 
-void			choice(t_env *env)
+void choice(t_env *env)
 {
 	if (env->c == 1)
 		mandeldraw(env);
@@ -22,9 +22,19 @@ void			choice(t_env *env)
 		juliadraw(env);
 	if (env->c == 3)
 		burningshipdraw(env);
+	if (env->c == 4)
+		juliadrawv3(env);
+	if (env->c == 5)
+		juliadrawv4(env);
+	if (env->c == 6)
+		mandeldrawv3(env);
+	if (env->c == 7)
+		mandeldrawv4(env);
+	if (env->c == 8)
+		tricorndraw(env);
 }
 
-int				printerror(int c)
+int printerror(int c)
 {
 	if (c == 1)
 	{
@@ -36,10 +46,10 @@ int				printerror(int c)
 		ft_putendl("Usage : ./fractol Mandelbrot, Julia, Burningship");
 		exit(0);
 	}
-	return(0);
+	return (0);
 }
 
-void			mouse(t_env *env)
+void mouse(t_env *env)
 {
 	mlx_hook(env->mlx_win, 2, 0, &key_stroke, env);
 	mlx_hook(env->mlx_win, 4, 0, &mouse_zoom, env);
@@ -47,8 +57,7 @@ void			mouse(t_env *env)
 		mlx_hook(env->mlx_win, 6, 0, &mouse_move, env);
 }
 
-
-void			mlxinit(t_env *env)
+void mlxinit(t_env *env)
 {
 	env->mlx_ptr = mlx_init();
 	env->mlx_win = mlx_new_window(env->mlx_ptr, WIN_W, WIN_H, "testing");
@@ -62,7 +71,7 @@ void			mlxinit(t_env *env)
 	choice(env);
 }
 
-int				main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	t_env *env;
 

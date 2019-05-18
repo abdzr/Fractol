@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:08:50 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/15 17:50:09 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 03:59:38 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,11 @@ typedef struct	s_env
 void			mandeldraw(t_env *env);
 void			juliadraw(t_env *env);
 void			burningshipdraw(t_env *env);
-void			burningshipdraw(t_env *env);
+void			juliadrawv3(t_env *env);
+void			juliadrawv4(t_env *env);
+void			mandeldrawv3(t_env *env);
+void			mandeldrawv4(t_env *env);
+void			tricorndraw(t_env *env);
 
 /*
 ** MLX events and image processing
