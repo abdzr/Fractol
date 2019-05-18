@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:08:50 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 03:59:38 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 06:14:28 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int				rgb(int r, int g, int b);
 int				*clrs(t_env *env);
 int				*fireorange(t_env *env);
 int				*aqua_blue(t_env *env);
+int				*colorpall(t_env *env);
 
 /*
 ** needed funcs for calculation or initialisation of values

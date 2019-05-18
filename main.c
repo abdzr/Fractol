@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 13:26:56 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 05:02:01 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 06:14:46 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void mlxinit(t_env *env)
 	env->k = 1;
 	env->max = 30;
 	env->scale = 1.1;
-	env->colors = clrs(env);
+	env->colors = colorpall(env);
 	values(env);
 	choice(env);
 }

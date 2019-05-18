@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:15 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 05:00:55 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 06:14:51 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void			values(t_env *env)
 	env->mxre = (WIN_W - WIN_W / 2.0) * 4.0 / WIN_W;
 	env->mnim = (0 - WIN_H / 2.0) * 4.0 / WIN_W;
 	env->mxim = (WIN_H - WIN_H / 2.0) * 4.0 / WIN_W;
-	env->colors = clrs(env);
 }
 
 
