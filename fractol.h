@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:08:50 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 06:14:28 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 07:34:56 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,14 @@ int				mouse_move(int x, int y, void *param);
 */
 
 int				rgb(int r, int g, int b);
-int				*clrs(t_env *env);
-int				*fireorange(t_env *env);
-int				*aqua_blue(t_env *env);
-int				*colorpall(t_env *env);
+int				*color1(t_env *env);
+int				*color2(t_env *env);
+int				*color3(t_env *env);
+int				*color4(t_env *env);
+int				*color5(t_env *env);
+int				*color6(t_env *env);
+int				*color7(t_env *env);
+int				*color8(t_env *env);
 
 /*
 ** needed funcs for calculation or initialisation of values

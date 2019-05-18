@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 13:35:12 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 06:44:14 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 07:52:33 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int rgb(int r, int g, int b)
 	return (*(int *)clr);
 }
 
-int *clrs(t_env *env)
+int *color1(t_env *env)
 {
 	env->tab[0] = rgb(238, 205, 163);
 	env->tab[1] = rgb(238, 198, 162);
@@ -51,7 +51,7 @@ int *clrs(t_env *env)
 	return (env->tab);
 }
 
-int *fireorange(t_env *env)
+int *color2(t_env *env)
 {
 	env->tab[0] = rgb(250, 116, 43);
 	env->tab[1] = rgb(250, 123, 48);
@@ -80,36 +80,36 @@ int *fireorange(t_env *env)
 	return (env->tab);
 }
 
-int *aqua_blue(t_env *env)
+int *color3(t_env *env)
 {
-	env->tab[0] = rgb(233, 89, 81);
-	env->tab[1] = rgb(93, 181, 199);
-	env->tab[2] = rgb(247, 216, 120);
-	env->tab[3] = rgb(230, 230, 234);
-	env->tab[4] = rgb(244, 244, 248);
-	env->tab[5] = rgb(244, 244, 248);
-	env->tab[6] = rgb(230, 230, 234);
-	env->tab[7] = rgb(247, 216, 120);
-	env->tab[8] = rgb(93, 181, 199);
-	env->tab[9] = rgb(233, 89, 81);
-	env->tab[10] = rgb(233, 89, 81);
-	env->tab[11] = rgb(93, 181, 199);
-	env->tab[12] = rgb(247, 216, 120);
-	env->tab[13] = rgb(230, 230, 234);
-	env->tab[14] = rgb(244, 244, 248);
-	env->tab[15] = rgb(244, 244, 248);
-	env->tab[16] = rgb(230, 230, 234);
-	env->tab[17] = rgb(247, 216, 120);
-	env->tab[18] = rgb(93, 181, 199);
-	env->tab[19] = rgb(233, 89, 81);
-	env->tab[20] = rgb(233, 89, 81);
-	env->tab[21] = rgb(93, 181, 199);
-	env->tab[22] = rgb(247, 216, 120);
-	env->tab[23] = rgb(230, 230, 234);
+	env->tab[0] = 0x00141414;
+	env->tab[1] = 0x00241924;
+	env->tab[2] = 0x00341E34;
+	env->tab[3] = 0x00452345;
+	env->tab[4] = 0x00552855;
+	env->tab[5] = 0x00662D66;
+	env->tab[6] = 0x00763276;
+	env->tab[7] = 0x00873787;
+	env->tab[8] = 0x0094666F;
+	env->tab[9] = 0x00A24657;
+	env->tab[10] = 0x00B0253F;
+	env->tab[11] = 0x00BE0528;
+	env->tab[12] = 0x00BA2B46;
+	env->tab[13] = 0x00B15264;
+	env->tab[14] = 0x00A87982;
+	env->tab[15] = 0x00A0A0A0;
+	env->tab[16] = 0x00ABABAB;
+	env->tab[17] = 0x00B7B7B7;
+	env->tab[18] = 0x00C3C3C3;
+	env->tab[19] = 0x00CFCFCF;
+	env->tab[20] = 0x00DBDBDB;
+	env->tab[21] = 0x00E7E7E7;
+	env->tab[22] = 0x00F3F3F3;
+	env->tab[23] = 0x00FFFFFF;
 	return (env->tab);
 }
 
-int *colorpall1(t_env *env)
+int *color4(t_env *env)
 {
 	env->tab[0] = 0xE500C4;
 	env->tab[1] = 0XDB00C3;
@@ -138,7 +138,7 @@ int *colorpall1(t_env *env)
 	return (env->tab);
 }
 
-int *colorpall(t_env *env)
+int *color5(t_env *env)
 {
     env->tab[0] = 0x001E5A1E;
 	env->tab[1] = 0x001C5628;
@@ -167,7 +167,7 @@ int *colorpall(t_env *env)
 	return (env->tab);
 }
 
-int	*colorpafll(t_env *env)
+int	*color6(t_env *env)
 {
 	env->tab[0] = 0x00A00A1E;
 	env->tab[1] = 0x00930A28;
@@ -193,5 +193,63 @@ int	*colorpafll(t_env *env)
 	env->tab[21] = 0x00F55A00;
 	env->tab[22] = 0x00FA5F00;
 	env->tab[23] = 0x00FF6400;
+	return(env->tab);
+}
+
+int *color7(t_env *env)
+{
+	env->tab[0] = 0x000A3278;
+	env->tab[1] = 0x000F2D79;
+	env->tab[2] = 0x0015287B;
+	env->tab[3] = 0x001B247D;
+	env->tab[4] = 0x00211F7F;
+	env->tab[5] = 0x00271B81;
+	env->tab[6] = 0x002D1682;
+	env->tab[7] = 0x00331284;
+	env->tab[8] = 0x00390D86;
+	env->tab[9] = 0x003F0988;
+	env->tab[10] = 0x0045048A;
+	env->tab[11] = 0x004B008C;
+	env->tab[12] = 0x00500091;
+	env->tab[13] = 0x0067239B;
+	env->tab[14] = 0x007F46A6;
+	env->tab[15] = 0x009669B1;
+	env->tab[16] = 0x00AE8CBB;
+	env->tab[17] = 0x00C5AFC6;
+	env->tab[18] = 0x00DDD2D1;
+	env->tab[19] = 0x00F5F5DC;
+	env->tab[20] = 0x00F0F0D7;
+	env->tab[21] = 0x00EBCDA0;
+	env->tab[22] = 0x00E6AA69;
+	env->tab[23] = 0x00E18732;
+	return(env->tab);
+}
+
+int *color8(t_env *env)
+{
+	env->tab[0] = 0x001E0500;
+	env->tab[1] = 0x00270502;
+	env->tab[2] = 0x00300505;
+	env->tab[3] = 0x00390508;
+	env->tab[4] = 0x0043050B;
+	env->tab[5] = 0x004C050E;
+	env->tab[6] = 0x00550511;
+	env->tab[7] = 0x005F0514;
+	env->tab[8] = 0x00640A14;
+	env->tab[9] = 0x00781A14;
+	env->tab[10] = 0x008C2B14;
+	env->tab[11] = 0x00A03C14;
+	env->tab[12] = 0x009B0A14;
+	env->tab[13] = 0x00910914;
+	env->tab[14] = 0x00870814;
+	env->tab[15] = 0x007D0714;
+	env->tab[16] = 0x00730714;
+	env->tab[17] = 0x00690614;
+	env->tab[18] = 0x005F0514;
+	env->tab[19] = 0x00550514;
+	env->tab[20] = 0x005A0A14;
+	env->tab[21] = 0x00853214;
+	env->tab[22] = 0x00B05A14;
+	env->tab[23] = 0x00DC8214;
 	return(env->tab);
 }

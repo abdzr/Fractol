@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:15 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 06:14:51 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/18 07:55:30 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,30 @@ int key_stroke(int key, void *test)
 	(key == KEY_PAD_8) ? env->c = 8 : 1;
 	if (key == KEY_SPACE)
 		env->k = (env->k == 0) ? 1 : 0;
-	if (key == KEY_C) 
-		env->colors = fireorange(env);
+	if (key == KEY_Z) 
+		env->colors = color1(env);
+	if (key == KEY_X)
+		env->colors = color2(env);
+	if (key == KEY_C)
+		env->colors = color3(env);
 	if (key == KEY_V)
-		env->colors = aqua_blue(env);
+		env->colors = color4(env);
+	if (key == KEY_B)
+		env->colors = color5(env);
+	if (key == KEY_N)
+		env->colors = color6(env);	
+	if (key == KEY_A)
+		env->colors = color7(env);
+	if (key == KEY_S)
+		env->colors = color8(env);
 	if (key == KEY_R)
-		mlx_init(env);
+		{
+		env->z = 0;
+		env->k = 1;
+		env->max = 30;
+		env->scale = 1.1;
+		env->colors = color1(env);
+		}
 	choice(env);
 	return (0);
 }
