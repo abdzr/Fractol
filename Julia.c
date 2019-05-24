@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:43:37 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 04:19:22 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/24 04:34:05 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void juliadraw(t_env *env)
 		env->col = -1;
 		while (++env->col < WIN_H)
 		{
-			env->cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * env->col;
-			env->cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * env->row;
+			env->cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * env->col + env->xx;
+			env->cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * env->row + env->yy;
 			env->x = env->cre;
 			env->y = env->cim;
 			env->iter = 0;
 			while (env->x * env->x + env->y * env->y <= 4 && env->iter < env->max)
 			{
 				env->xnew = env->x * env->x - env->y * env->y + (env->jul_cre);
-				env->y = 2 * env->x * env->y + (env->jul_cim);
+				env->y = 2 * env->x * env->y + env->jul_cim ;
 				env->x = env->xnew;
 				env->iter++;
 			}

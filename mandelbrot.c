@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 22:53:04 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 03:55:10 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/23 05:43:25 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void		mandeldraw(t_env *env)
 			while (env->x * env->x + env->y * env->y <= 4
 					&& env->iter < env->max)
 			{
-				env->xnew = env->x * env->x - env->y * env->y + (env->cre);
-				env->y = (2 * env->x * env->y + (env->cim));
+				env->xnew = env->x * env->x - env->y * env->y + env->cre + env->xx;
+				env->y = 2 * env->x * env->y + env->cim + env->yy;
 				env->x = env->xnew;
 				env->iter++;
 			}

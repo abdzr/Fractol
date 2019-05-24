@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:08:50 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 07:34:56 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/23 05:19:48 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ typedef struct	s_env
 	int			size_l;
 	int			c;
 	int			k;
+	double		xx;
+	double		yy;
+	double		dx;
+	double		dy;
 	double		mnre;
 	double		mxre;
 	double		mnim;

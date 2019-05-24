@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:15 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/18 07:55:30 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/24 04:35:22 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int key_stroke(int key, void *test)
 
 	env = (t_env *)test;
 	(key == 53) ? exit(0) : 1;
-	(key == 126) ? env->max = env->max + 5 : 1;
+	(key == KEY_PLUS) ? env->max = env->max + 5 : 1;
 	(key == KEY_PAD_1) ? env->c = 1 : 1;
 	(key == KEY_PAD_2) ? env->c = 2 : 1;
 	(key == KEY_PAD_3) ? env->c = 3 : 1;
@@ -54,18 +54,27 @@ int key_stroke(int key, void *test)
 		env->scale = 1.1;
 		env->colors = color1(env);
 		}
+	if (key == KEY_UP)
+		env->yy += env->dy * 0.0009;
+	if (key == KEY_DOWN)
+		env->yy -= env->dy * 0.0009;
+	if (key == KEY_LEFT)
+		env->xx += env->dx * 0.0009;
+	if (key == KEY_RIGHT)
+		env->xx -= env->dx * 0.0009;
 	choice(env);
 	return (0);
 }
 
 void			values(t_env *env)
 {
-	env->mnre = (0 - WIN_W / 2.0) * 4.0 / WIN_W;
+	env->mnre = ((0 - WIN_W / 2.0) * 4.0 / WIN_W) + env->yy;
 	env->mxre = (WIN_W - WIN_W / 2.0) * 4.0 / WIN_W;
 	env->mnim = (0 - WIN_H / 2.0) * 4.0 / WIN_W;
 	env->mxim = (WIN_H - WIN_H / 2.0) * 4.0 / WIN_W;
+	env->dx = env->mxre - env->mnre;
+	env->dy = env->mxim - env->mnim;
 }
-
 
 
 double ft_map(double n, double start, double min, double max)
