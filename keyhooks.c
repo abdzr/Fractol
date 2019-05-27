@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:15 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/24 04:35:22 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/26 05:01:25 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ void			values(t_env *env)
 	env->mxim = (WIN_H - WIN_H / 2.0) * 4.0 / WIN_W;
 	env->dx = env->mxre - env->mnre;
 	env->dy = env->mxim - env->mnim;
+	if (env->dx < 0)
+		env->dx = -env->dx;
+	if (env->dy < 0)
+		env->dy = -env->dy;
 }
 
 

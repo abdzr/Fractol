@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:08:50 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/23 05:19:48 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/05/27 21:17:32 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,13 @@
 # include "./libft/libft.h"
 # include "./ft_mlx_keys.h"
 # include <math.h>
+# include <pthread.h>
 # define WIN_W 650
 # define WIN_H 650
-
-typedef struct 	s_point
-{
-	double		x;
-	double		y;
-}				t_point;
 
 typedef struct	s_env
 {
 	void		*mlx_ptr;
-	t_point		juliapos;
-	int			islocked;	
 	void		*mlx_win;
 	void		*mlx_img;
 	int			tab[24];
@@ -69,6 +62,15 @@ typedef struct	s_env
 	double		jul_cim;
 }				t_env;
 
+typedef	struct s_threads
+{
+	double x;
+	double y;
+	double xnew;
+	double cre;
+	double cim;
+}				t_threads;
+
 /*
 **  DRAWING
 */
@@ -82,6 +84,11 @@ void			mandeldrawv3(t_env *env);
 void			mandeldrawv4(t_env *env);
 void			tricorndraw(t_env *env);
 
+
+void		*mandeldraw1(void 	*arg);
+void		*mandeldraw2(void 	*arg);
+void		*mandeldraw3(void 	*arg);
+void		*mandeldraw4(void 	*arg);
 /*
 ** MLX events and image processing
 */
