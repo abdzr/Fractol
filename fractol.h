@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:08:50 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/27 21:17:32 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/01 20:32:36 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,13 @@ typedef struct	s_env
 
 typedef	struct s_threads
 {
-	double x;
-	double y;
-	double xnew;
-	double cre;
-	double cim;
+	double	x;
+	double	y;
+	double	xnew;
+	double	cre;
+	double	cim;
+	double	jul_cre;
+	double	jul_cim;
 }				t_threads;
 
 /*

@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:43:37 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/01 13:53:46 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/01 20:34:35 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int julia1calc(t_env *env, t_threads thread)
 	iter = 0;
 	while (thread.x * thread.x +thread.y * thread.y <= 4 && iter < env->max)
 	{
-		thread.xnew = thread.x * thread.x - thread.y * thread.y + (env->jul_cre);
-		thread.y = 2 * thread.x * thread.y + env->jul_cim;
+		thread.xnew = thread.x * thread.x - thread.y * thread.y + thread.jul_cre;
+		thread.y = 2 * thread.x * thread.y + thread.jul_cim;
 		thread.x = thread.xnew;
 		iter++;
 	}
@@ -165,6 +165,13 @@ void juliadraw(t_env *env)
 	}
 	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
 }
+
+
+
+
+
+
+
 
 
 /* EVERYTHING ELSE */
