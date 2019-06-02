@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:43:37 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/01 20:34:35 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/02 04:38:19 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int julia1calc(t_env *env, t_threads thread)
 	iter = 0;
 	while (thread.x * thread.x +thread.y * thread.y <= 4 && iter < env->max)
 	{
-		thread.xnew = thread.x * thread.x - thread.y * thread.y + thread.jul_cre;
-		thread.y = 2 * thread.x * thread.y + thread.jul_cim;
+		thread.xnew = thread.x * thread.x - thread.y * thread.y + env->jul_cre;
+		thread.y = 2 * thread.x * thread.y + env->jul_cim;
 		thread.x = thread.xnew;
 		iter++;
 	}
@@ -55,7 +55,7 @@ void *juliadraw1(void	*arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
 			env->x = thread.cre;
 			env->y = thread.cim;
-			julia1calc(env, thread);
+			iter = julia1calc(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
@@ -83,7 +83,7 @@ void *juliadraw2(void *arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
 			env->x = thread.cre;
 			env->y = thread.cim;
-			julia1calc(env, thread);
+			iter = julia1calc(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
@@ -100,6 +100,7 @@ void *juliadraw3(void *arg)
 	int row;
 	int col;
 int iter = 0;
+
 	row = WIN_W / 2;
 	while (++row <= WIN_W)
 	{
@@ -110,7 +111,7 @@ int iter = 0;
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row ;
 			thread.x = thread.cre;
 			thread.y = thread.cim;
-			julia1calc(env, thread);
+			iter = julia1calc(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
@@ -138,7 +139,7 @@ void *juliadraw4(void *arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row ;
 			thread.x = thread.cre;
 			thread.y = thread.cim;
-			julia1calc(env, thread);
+			iter = julia1calc(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
