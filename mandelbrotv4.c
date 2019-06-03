@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 05:14:53 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/02 05:33:09 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/03 04:56:58 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int     mandeldrawv4calc(t_env *env, t_threads thread)
     iter = 0;
     while (thread.x * thread.x + thread.y * thread.y <= 4 && iter < env->max)
 			{
-				env->xnew = thread.x * thread.x * thread.x * thread.x - 6 * thread.x * thread.x * thread.y * thread.y + thread.y * thread.y * thread.y * thread.y + thread.cre;
+				thread.xnew = thread.x * thread.x * thread.x * thread.x - 6 * thread.x * thread.x * thread.y * thread.y + thread.y * thread.y * thread.y * thread.y + thread.cre;
 				thread.y = 4 * thread.x * thread.x * thread.x * thread.y - 4 * thread.x * thread.y * thread.y * thread.y + thread.cim;
 				thread.x = thread.xnew;
 				iter++;
