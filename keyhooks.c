@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:15 by azarzor           #+#    #+#             */
-/*   Updated: 2019/05/26 05:01:25 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/04 06:28:51 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ int key_stroke(int key, void *test)
 
 	env = (t_env *)test;
 	(key == 53) ? exit(0) : 1;
-	(key == KEY_PLUS) ? env->max = env->max + 5 : 1;
+	if (key == KEY_PLUS) 
+	{
+		env->max = env->max + 5;
+		printf("%d\n", env->max);
+	}
 	(key == KEY_PAD_1) ? env->c = 1 : 1;
 	(key == KEY_PAD_2) ? env->c = 2 : 1;
 	(key == KEY_PAD_3) ? env->c = 3 : 1;
