@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:43:37 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/03 03:57:28 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/04 04:10:17 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void *juliadraw2(void *arg)
 	int row;
 	int col;
 
+	printf ("real = %f \n, IM = %f\n", env->jul_cre, env->jul_cim);
 	row = -1;
 	while (++row <= WIN_W / 2)
 	{
