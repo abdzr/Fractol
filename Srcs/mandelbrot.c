@@ -6,48 +6,21 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 22:53:04 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/05 18:42:55 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/05 19:50:20 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Inclds/fractol.h"
 
-void images(t_env *env)
+void				*mandeldraw1(void *arg)
 {
-	mlx_clear_window(env->mlx_ptr, env->mlx_win);
-	mlx_destroy_image(env->mlx_ptr, env->mlx_img);
-	env->mlx_img = mlx_new_image(env->mlx_ptr, WIN_W, WIN_H);
-	env->mlx_data = (int *)mlx_get_data_addr(env->mlx_img, &(env->bpp),
-											 &(env->size_l), &(env->endian));
-	env->row = -1;
-}
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
 
-int test(t_env *env, t_threads thread)
-{
-	int iter;
-	iter = 0;
-
-	while (thread.x * thread.x + thread.y * thread.y <= 4 && iter < env->max)
-	{
-		thread.xnew = thread.x * thread.x - thread.y * thread.y + thread.cre + env->xx;
-		thread.y = 2 * thread.x * thread.y + thread.cim + env->yy;
-		thread.x = thread.xnew;
-		iter++;
-	}
-	return (iter);
-}
-
-/* TRYING THE THREADING PART */
-
-void *mandeldraw1(void *arg)
-{
-	t_threads thread;
-	t_env *env;
 	env = (t_env *)arg;
-	int iter;
-	int row = 0;
-	int col = 0;
-
 	row = -1;
 	while (++row <= WIN_W / 2)
 	{
@@ -58,7 +31,7 @@ void *mandeldraw1(void *arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
 			env->x = 0;
 			env->y = 0;
-			iter = test(env, thread);
+			iter = mandelcalc(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
@@ -67,15 +40,15 @@ void *mandeldraw1(void *arg)
 	pthread_exit(NULL);
 }
 
-void *mandeldraw2(void *arg)
+void				*mandeldraw2(void *arg)
 {
-	t_threads thread;
-	t_env *env;
-	env = (t_env *)arg;
-	int iter;
-	int row = 0;
-	int col = 0;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
 
+	env = (t_env *)arg;
 	row = -1;
 	while (++row <= WIN_W / 2)
 	{
@@ -86,27 +59,24 @@ void *mandeldraw2(void *arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
 			env->x = 0;
 			env->y = 0;
-			iter = test(env,thread);
+			iter = mandelcalc(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
 		}
 	}
-
 	pthread_exit(NULL);
 }
 
-void *mandeldraw3(void *arg)
+void				*mandeldraw3(void *arg)
 {
-	t_threads thread;
-	t_env *env;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
+
 	env = (t_env *)arg;
-	int iter;
-	int row = 0;
-	int col = 0;
-
-
-
 	row = WIN_W / 2;
 	while (++row < WIN_W)
 	{
@@ -117,27 +87,24 @@ void *mandeldraw3(void *arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
 			env->x = 0;
 			env->y = 0;
-			iter = test(env, thread);
+			iter = mandelcalc(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
 		}
 	}
-
 	pthread_exit(NULL);
 }
 
-void *mandeldraw4(void *arg)
+void				*mandeldraw4(void *arg)
 {
-	t_threads thread;
-	t_env *env;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
+
 	env = (t_env *)arg;
-	int iter;
-	int row = 0;
-	int col = 0;
-
-
-
 	row = WIN_W / 2;
 	while (++row < WIN_W)
 	{
@@ -148,22 +115,21 @@ void *mandeldraw4(void *arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
 			env->x = 0;
 			env->y = 0;
-			iter = test(env,thread);
+			iter = mandelcalc(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
 		}
 	}
-
 	pthread_exit(NULL);
 }
 
-void mandeldraw(t_env *env)
+void				mandeldraw(t_env *env)
 {
-	int i;
-	pthread_t thread[4];
+	int			i;
+	pthread_t	thread[4];
+
 	images(env);
-
 	i = 0;
 	pthread_create(&thread[0], NULL, mandeldraw1, (void *)env);
 	pthread_create(&thread[1], NULL, mandeldraw2, (void *)env);
@@ -176,6 +142,3 @@ void mandeldraw(t_env *env)
 	}
 	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
 }
-
-/* THE REST */
-

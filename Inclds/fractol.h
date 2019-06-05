@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:08:50 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/05 18:43:40 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/05 19:54:33 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,45 @@ typedef	struct s_threads
 **  DRAWING
 */
 
-void			mandeldraw(t_env *env);
 void			juliadraw(t_env *env);
-void			burningshipdraw(t_env *env);
 void			juliadrawv3(t_env *env);
 void			juliadrawv4(t_env *env);
-void			mandeldrawv3(t_env *env);
 void			mandeldrawv4(t_env *env);
 void			tricorndraw(t_env *env);
 
 
-void		*mandeldraw1(void 	*arg);
-void		*mandeldraw2(void 	*arg);
-void		*mandeldraw3(void 	*arg);
-void		*mandeldraw4(void 	*arg);
+/*
+**		MANDELDBROT
+*/
+
+int             mandelcalc(t_env *env, t_threads thread);
+void			mandeldraw(t_env *env);
+void			*mandeldraw1(void 	*arg);
+void			*mandeldraw2(void 	*arg);
+void			*mandeldraw3(void 	*arg);
+void			*mandeldraw4(void 	*arg);
+
+/*
+**		MANDELDBROTV3
+*/
+
+int				mandelv3calc(t_env *env, t_threads thread);
+void			mandeldrawv3(t_env *env);
+void			*mandeldrawv31(void *args);
+void			*mandeldrawv32(void *args);
+void			*mandeldrawv33(void *args);
+void			*mandeldrawv34(void *args);
+/*
+**		BURNINSHIP
+*/
+
+int					burningshipcalc(t_env *env , t_threads thread);
+void				burningshipdraw(t_env *env);
+void				*burningshipdraw1(void *arg);
+void				*burningshipdraw2(void *arg);
+void				*burningshipdraw3(void *arg);
+void				*burningshipdraw4(void *arg);
+
 /*
 ** MLX events and image processing
 */
