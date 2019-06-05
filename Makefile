@@ -8,7 +8,7 @@ all : $(NAME)
 
 $(NAME) :
 	@	make -C libft
-	@	gcc $(FLAGS) -c $(SRCS)
+	@	gcc $(FLAGS) -c ./Srcs/$(SRCS)
 	@	gcc -o $(NAME) $(OBJ) libft/libft.a -L /usr/local/lib -lmlx -framework OpenGl -framework Appkit
 	@	echo "Fractol Created"
 
