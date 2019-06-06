@@ -6,146 +6,130 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 12:24:16 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/05 18:42:59 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/06 18:06:21 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Inclds/fractol.h"
 
-int juliav4calc(t_env *env, t_threads thread)
+void			*juliadrawv41(void *arg)
 {
-    int iter;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
 
-    iter = 0;
-    while (thread.x * thread.x + thread.y * thread.y <= 4 && iter < env->max)
-    {
-        thread.xnew = thread.x * thread.x * thread.x * thread.x - 6 * thread.x * thread.x * thread.y * thread.y + thread.y * thread.y * thread.y * thread.y + env->jul_cre;
-        thread.y = 4 * thread.x * thread.x * thread.x * thread.y - 4 * thread.x * thread.y * thread.y * thread.y + env->jul_cim;
-        thread.x = thread.xnew;
-        iter++;
-    }
-    return (iter);
+	env = (t_env *)arg;
+	row = -1;
+	while (++row <= WIN_W / 2)
+	{
+		col = -1;
+		while (++col <= WIN_H / 2)
+		{
+			thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
+			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
+			thread.x = thread.cre;
+			thread.y = thread.cim;
+			iter = juliav4calc(env, thread);
+			if (iter < env->max)
+				env->mlx_data[row * WIN_W + col] =
+					env->colors[iter % 24];
+		}
+	}
+	pthread_exit(NULL);
 }
 
-void *juliadrawv41(void     *arg)
+void			*juliadrawv42(void *arg)
 {
-    t_threads thread;
-    t_env *env;
-    env = (t_env *)arg;
-    int iter;
-    int row;
-    int col;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
 
-    row = -1;
-    while (++row <= WIN_W / 2)
-    {
-        col = -1;
-        while (++col <= WIN_H / 2)
-        {
-            thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
-            thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
-            thread.x = thread.cre;
-            thread.y = thread.cim;
-            iter = juliav4calc(env , thread);
-            if (iter < env->max)
-                env->mlx_data[row * WIN_W + col] =
-                    env->colors[iter % 24];
-        }
-    }
-   pthread_exit(NULL);
+	env = (t_env *)arg;
+	row = -1;
+	while (++row <= WIN_W)
+	{
+		col = WIN_H / 2;
+		while (++col <= WIN_H)
+		{
+			thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
+			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
+			thread.x = thread.cre;
+			thread.y = thread.cim;
+			iter = juliav4calc(env, thread);
+			if (iter < env->max)
+				env->mlx_data[row * WIN_W + col] =
+					env->colors[iter % 24];
+		}
+	}
+	pthread_exit(NULL);
 }
 
-void *juliadrawv42(void     *arg)
+void			*juliadrawv43(void *arg)
 {
-    t_threads thread;
-    t_env *env;
-    env = (t_env *)arg;
-    int iter;
-    int row;
-    int col;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
 
-    row = -1;
-    while (++row <= WIN_W)
-    {
-        col = WIN_H / 2;
-        while (++col <= WIN_H)
-        {
-            thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
-            thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
-            thread.x = thread.cre;
-            thread.y = thread.cim;
-            iter = juliav4calc(env , thread);
-            if (iter < env->max)
-                env->mlx_data[row * WIN_W + col] =
-                    env->colors[iter % 24];
-        }
-    }
-   pthread_exit(NULL);
+	env = (t_env *)arg;
+	row = WIN_W / 2;
+	while (++row <= WIN_W)
+	{
+		col = -1;
+		while (++col <= WIN_H / 2)
+		{
+			thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
+			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
+			thread.x = thread.cre;
+			thread.y = thread.cim;
+			iter = juliav4calc(env, thread);
+			if (iter < env->max)
+				env->mlx_data[row * WIN_W + col] =
+					env->colors[iter % 24];
+		}
+	}
+	pthread_exit(NULL);
 }
 
-void *juliadrawv43(void     *arg)
+void			*juliadrawv44(void *arg)
 {
-    t_threads thread;
-    t_env *env;
-    env = (t_env *)arg;
-    int iter;
-    int row;
-    int col;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
 
-    row = WIN_W / 2;
-    while (++row <= WIN_W)
-    {
-        col = -1;
-        while (++col <= WIN_H / 2)
-        {
-            thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
-            thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
-            thread.x = thread.cre;
-            thread.y = thread.cim;
-            iter = juliav4calc(env , thread);
-            if (iter < env->max)
-                env->mlx_data[row * WIN_W + col] =
-                    env->colors[iter % 24];
-        }
-    }
-   pthread_exit(NULL);
+	env = (t_env *)arg;
+	row = WIN_W / 2;
+	while (++row <= WIN_W)
+	{
+		col = WIN_H / 2;
+		while (++col <= WIN_H)
+		{
+			thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
+			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
+			thread.x = thread.cre;
+			thread.y = thread.cim;
+			iter = juliav4calc(env, thread);
+			if (iter < env->max)
+				env->mlx_data[row * WIN_W + col] =
+					env->colors[iter % 24];
+		}
+	}
+	pthread_exit(NULL);
 }
 
-void *juliadrawv44(void     *arg)
+void			juliadrawv4(t_env *env)
 {
-    t_threads thread;
-    t_env *env;
-    env = (t_env *)arg;
-    int iter;
-    int row;
-    int col;
+	int			i;
+	pthread_t	thread[4];
 
-    row = WIN_W / 2;
-    while (++row <= WIN_W)
-    {
-        col = WIN_H / 2;
-        while (++col <= WIN_H)
-        {
-            thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
-            thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
-            thread.x = thread.cre;
-            thread.y = thread.cim;
-            iter = juliav4calc(env , thread);
-            if (iter < env->max)
-                env->mlx_data[row * WIN_W + col] =
-                    env->colors[iter % 24];
-        }
-    }
-   pthread_exit(NULL);
-}
-
-
-void juliadrawv4(t_env *env)
-{
-	int i;
-	pthread_t thread[4];
 	images(env);
-
 	i = 0;
 	pthread_create(&thread[0], NULL, juliadrawv41, (void *)env);
 	pthread_create(&thread[1], NULL, juliadrawv42, (void *)env);

@@ -6,36 +6,21 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 13:04:08 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/05 18:43:03 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/06 17:51:55 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Inclds/fractol.h"
 
-int tridraw(t_env *env, t_threads thread)
+void		*tricorndraw1(void *arg)
 {
-	int iter;
-	iter = 0;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
 
-	while (thread.x * thread.x + thread.y * thread.y <= 4 && iter < env->max)
-	{
-		thread.xnew = thread.x * thread.x - thread.y * thread.y + thread.cre + env->xx;
-		thread.y = -2 * thread.x * thread.y + thread.cim + env->yy;
-		thread.x = thread.xnew;
-		iter++;
-	}
-	return (iter);
-}
-
-void *tricorndraw1(void *arg)
-{
-	t_threads thread;
-	t_env *env;
 	env = (t_env *)arg;
-	int iter;
-	int row;
-	int col;
-
 	row = -1;
 	while (++row <= WIN_W / 2)
 	{
@@ -46,7 +31,7 @@ void *tricorndraw1(void *arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
 			env->x = 0;
 			env->y = 0;
-			iter = tridraw(env,thread);
+			iter = tridraw(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
@@ -55,15 +40,15 @@ void *tricorndraw1(void *arg)
 	pthread_exit(NULL);
 }
 
-void *tricorndraw2(void *arg)
+void		*tricorndraw2(void *arg)
 {
-	t_threads thread;
-	t_env *env;
-	env = (t_env *)arg;
-	int iter;
-	int row;
-	int col;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
 
+	env = (t_env *)arg;
 	row = -1;
 	while (++row <= WIN_W / 2)
 	{
@@ -74,7 +59,7 @@ void *tricorndraw2(void *arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
 			env->x = 0;
 			env->y = 0;
-			iter = tridraw(env,thread);
+			iter = tridraw(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
@@ -83,15 +68,15 @@ void *tricorndraw2(void *arg)
 	pthread_exit(NULL);
 }
 
-void *tricorndraw3(void *arg)
+void		*tricorndraw3(void *arg)
 {
-	t_threads thread;
-	t_env *env;
-	env = (t_env *)arg;
-	int iter;
-	int row;
-	int col;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
 
+	env = (t_env *)arg;
 	row = WIN_W / 2;
 	while (++row <= WIN_W)
 	{
@@ -102,7 +87,7 @@ void *tricorndraw3(void *arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
 			env->x = 0;
 			env->y = 0;
-			iter = tridraw(env,thread);
+			iter = tridraw(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
@@ -111,15 +96,15 @@ void *tricorndraw3(void *arg)
 	pthread_exit(NULL);
 }
 
-void *tricorndraw4(void *arg)
+void		*tricorndraw4(void *arg)
 {
-	t_threads thread;
-	t_env *env;
-	env = (t_env *)arg;
-	int iter;
-	int row;
-	int col;
+	t_threads	thread;
+	t_env		*env;
+	int			iter;
+	int			row;
+	int			col;
 
+	env = (t_env *)arg;
 	row = WIN_W / 2;
 	while (++row <= WIN_W)
 	{
@@ -130,7 +115,7 @@ void *tricorndraw4(void *arg)
 			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
 			env->x = 0;
 			env->y = 0;
-			iter = tridraw(env,thread);
+			iter = tridraw(env, thread);
 			if (iter < env->max)
 				env->mlx_data[row * WIN_W + col] =
 					env->colors[iter % 24];
@@ -139,10 +124,11 @@ void *tricorndraw4(void *arg)
 	pthread_exit(NULL);
 }
 
-void tricorndraw(t_env *env)
+void		tricorndraw(t_env *env)
 {
-	int i;
-	pthread_t thread[4];
+	int			i;
+	pthread_t	thread[4];
+
 	images(env);
 	i = 0;
 	pthread_create(&thread[0], NULL, tricorndraw1, (void *)env);
