@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:08:50 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/06 19:16:38 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/06 20:38:14 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "./ft_mlx_keys.h"
 # include <math.h>
 # include <pthread.h>
-# define WIN_W 650
-# define WIN_H 650
+# define W 650
+# define H 650
 
 typedef struct		s_env
 {

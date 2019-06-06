@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 05:14:53 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/06 18:39:20 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/06 20:09:15 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ void	*mandeldrawv41(void *arg)
 
 	env = (t_env *)arg;
 	row = -1;
-	while (++row <= WIN_W / 2)
+	while (++row <= W / 2)
 	{
 		col = -1;
-		while (++col <= WIN_H / 2)
+		while (++col <= H / 2)
 		{
-			thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
-			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
+			thread.cre = env->mnre + ((env->mxre - env->mnre) / W) * col;
+			thread.cim = env->mnim + ((env->mxim - env->mnim) / H) * row;
 			env->x = 0;
 			env->y = 0;
 			iter = mandeldrawv4calc(env, thread);
 			if (iter < env->max)
-				env->mlx_data[row * WIN_W + col] =
+				env->mlx_data[row * W + col] =
 					env->colors[iter % 24];
 		}
 	}
@@ -50,18 +50,18 @@ void	*mandeldrawv42(void *arg)
 
 	env = (t_env *)arg;
 	row = -1;
-	while (++row <= WIN_W / 2)
+	while (++row <= W / 2)
 	{
-		col = WIN_H / 2;
-		while (++col <= WIN_H)
+		col = H / 2;
+		while (++col <= H)
 		{
-			thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
-			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
+			thread.cre = env->mnre + ((env->mxre - env->mnre) / W) * col;
+			thread.cim = env->mnim + ((env->mxim - env->mnim) / H) * row;
 			env->x = 0;
 			env->y = 0;
 			iter = mandeldrawv4calc(env, thread);
 			if (iter < env->max)
-				env->mlx_data[row * WIN_W + col] =
+				env->mlx_data[row * W + col] =
 					env->colors[iter % 24];
 		}
 	}
@@ -77,19 +77,19 @@ void	*mandeldrawv43(void *arg)
 	int			col;
 
 	env = (t_env *)arg;
-	row = WIN_W / 2;
-	while (++row <= WIN_W)
+	row = W / 2;
+	while (++row <= W)
 	{
 		col = -1;
-		while (++col <= WIN_H / 2)
+		while (++col <= H / 2)
 		{
-			thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
-			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
+			thread.cre = env->mnre + ((env->mxre - env->mnre) / W) * col;
+			thread.cim = env->mnim + ((env->mxim - env->mnim) / H) * row;
 			env->x = 0;
 			env->y = 0;
 			iter = mandeldrawv4calc(env, thread);
 			if (iter < env->max)
-				env->mlx_data[row * WIN_W + col] =
+				env->mlx_data[row * W + col] =
 					env->colors[iter % 24];
 		}
 	}
@@ -105,19 +105,19 @@ void	*mandeldrawv44(void *arg)
 	int			col;
 
 	env = (t_env *)arg;
-	row = WIN_W / 2;
-	while (++row <= WIN_W)
+	row = W / 2;
+	while (++row <= W)
 	{
-		col = WIN_H / 2;
-		while (++col <= WIN_H)
+		col = H / 2;
+		while (++col <= H)
 		{
-			thread.cre = env->mnre + ((env->mxre - env->mnre) / WIN_W) * col;
-			thread.cim = env->mnim + ((env->mxim - env->mnim) / WIN_H) * row;
+			thread.cre = env->mnre + ((env->mxre - env->mnre) / W) * col;
+			thread.cim = env->mnim + ((env->mxim - env->mnim) / H) * row;
 			env->x = 0;
 			env->y = 0;
 			iter = mandeldrawv4calc(env, thread);
 			if (iter < env->max)
-				env->mlx_data[row * WIN_W + col] =
+				env->mlx_data[row * W + col] =
 					env->colors[iter % 24];
 		}
 	}

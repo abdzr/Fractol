@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 17:47:29 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/06 18:34:01 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/06 19:48:46 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ int			mandeldrawv4calc(t_env *env, t_threads thread)
 	{
 		thread.xnew = thread.x * thread.x * thread.x * thread.x - 6 *
 		thread.x * thread.x * thread.y * thread.y + thread.y *
-		thread.y * thread.y * thread.y + thread.cre;
+		thread.y * thread.y * thread.y + thread.cre + env->xx;
 		thread.y = 4 * thread.x * thread.x * thread.x * thread.y - 4 *
-		thread.x * thread.y * thread.y * thread.y + thread.cim;
+		thread.x * thread.y * thread.y * thread.y + thread.cim + env->yy;
 		thread.x = thread.xnew;
 		iter++;
 	}

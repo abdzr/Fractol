@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:15 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/06 17:45:24 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/06 20:09:15 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	key_stroke2(int key, void *test)
 
 void	values(t_env *env)
 {
-	env->mnre = ((0 - WIN_W / 2.0) * 4.0 / WIN_W) + env->yy;
-	env->mxre = (WIN_W - WIN_W / 2.0) * 4.0 / WIN_W;
-	env->mnim = (0 - WIN_H / 2.0) * 4.0 / WIN_W;
-	env->mxim = (WIN_H - WIN_H / 2.0) * 4.0 / WIN_W;
+	env->mnre = ((0 - W / 2.0) * 4.0 / W) + env->yy;
+	env->mxre = (W - W / 2.0) * 4.0 / W;
+	env->mnim = (0 - H / 2.0) * 4.0 / W;
+	env->mxim = (H - H / 2.0) * 4.0 / W;
 	env->dx = env->mxre - env->mnre;
 	env->dy = env->mxim - env->mnim;
 	if (env->dx < 0)

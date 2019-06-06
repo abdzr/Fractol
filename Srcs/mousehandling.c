@@ -6,7 +6,7 @@
 /*   By: azarzor <azarzor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 16:41:47 by azarzor           #+#    #+#             */
-/*   Updated: 2019/06/06 17:45:32 by azarzor          ###   ########.fr       */
+/*   Updated: 2019/06/06 20:38:14 by azarzor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int				mouse_zoom(int button, int x, int y, void *param)
 	double		newy;
 
 	env = (t_env *)param;
-	newx = ft_map(x, WIN_W, env->mnre, env->mxre);
-	newy = ft_map(y, WIN_H, env->mnim, env->mxim);
+	newx = ft_map(x, W, env->mnre, env->mxre);
+	newy = ft_map(y, H, env->mnim, env->mxim);
 	if (button == 4)
 	{
 		env->mnre = (env->mnre - newx) * env->scale + newx;
@@ -58,8 +58,8 @@ int				mouse_move(int x, int y, void *param)
 		return (0);
 	if (env->k == 0)
 		return (0);
-	newx = ft_map(x, WIN_W, -2, 2);
-	newy = ft_map(y, WIN_H, -2, 2);
+	newx = ft_map(x, W, -2, 2);
+	newy = ft_map(y, H, -2, 2);
 	env->jul_cre = newx;
 	env->jul_cim = newy;
 	if (env->c == 2)
