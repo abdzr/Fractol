@@ -1,6 +1,6 @@
 NAME = fractol
-SRCS = *.c
-INCLDS = *.h
+SRCS = ./Srcs/*.c
+INCLDS = ./Inclds/*.h
 FLAGS = -Wextra -Werror -Wall
 OBJ = *.o
 
@@ -8,7 +8,7 @@ all : $(NAME)
 
 $(NAME) :
 	@	make -C libft
-	@	gcc $(FLAGS) -c ./Srcs/$(SRCS)
+	@	gcc $(FLAGS) -c $(SRCS)
 	@	gcc -o $(NAME) $(OBJ) libft/libft.a -L /usr/local/lib -lmlx -framework OpenGl -framework Appkit
 	@	echo "Fractol Created"
 
